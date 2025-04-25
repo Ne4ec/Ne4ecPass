@@ -1,6 +1,9 @@
 # PasswordManager
-
-A CLI password manager, created with Python. It is for educational purposes only—do not use it as your default password manager!
+A CLI password manager, created with Python. It is for educational purposes only—do not use it as your default password manager! <br>
+Create a password and give them an title <br>
+![creation_of_a_password_poc](https://github.com/Ne4ec/Ne4ecPass/blob/main/.pictures/cration_of_a_password_poc.png) <br>
+and get the password by the title <br>
+![get_a_password](https://github.com/Ne4ec/Ne4ecPass/blob/main/.pictures/get_a_password_poc.png) <br>
 
 ## Installation
 ### Linux
