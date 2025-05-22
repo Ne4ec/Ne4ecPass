@@ -1,7 +1,8 @@
 #!/bin/python3
  
 import random
-import time
+from time import sleep
+import os
 import argparse
 
 from animation import logo
@@ -34,29 +35,43 @@ if __name__ == "__main__":
     
     parser.add_argument("-a", "--all", action="store_true", help="show all Stored name and password pairs")
     parser.add_argument("-c", "--create", action="store_true", help="create a new entry with specified name")
+    parser.add_argument("-cp", "--count-password", action="store_true", help="Display the number of passwords stored in the backend")
     parser.add_argument("-g", "--get-a-password", action="store_true", help="show password by the specified name")
+
 
     display_view(logo)
 
     args = parser.parse_args()
-
     if args.all:
-        with open("password_storage.py", 'r') as password_storage_file:
-            all_passwords = password_storage_file.read()
-            print(all_passwords)
-            successful_commend()
+        print("Here are all the title and password pairs:\n" + 40 * '-')
+        
+        for pair in pm_as_var.password.items():
+            print(f"| {pair}")
+        print(40 * '-')
+        successful_commend()
     elif args.create:
         with open("password_storage.py", 'a') as password_storage_file:
-            title_of_new_password = input("What is the title:\n > ").title().strip()
-            print(f"You password is creating, for {title_of_new_password} ...")
+            while True:
+                title_of_new_password = input("What is the title:\n > ").title().strip()
+                if "'" in title_of_new_password or '"' in title_of_new_password:
+                    print("Please, don't the 2 following characters\n - '\n - \"  \nas input!")
+                    continue
+                elif title_of_new_password in pm_as_var.password:
+                    print("The title is already used!\nPlease use another title...\n" + 40 * '-' + "\n")
+                else:
+                    break
+            print(f"You password is creating, for {title_of_new_password}...")
             generated_password = password_generator()
             time.sleep(0.5)
-            password_storage_file.write(f"\npm_as_var.password['{title_of_new_password}'] = '{generated_password}'")
+            password_storage_file.write(f"\npm_as_var.password[str('{title_of_new_password}')] = '{generated_password}'")
             display_view(f"| Title: {title_of_new_password}\n| Password: {generated_password} ")
             successful_commend()
     elif args.get_a_password:
         title = input("What is the title of the password you are looking for:\n > ").title().strip()
         pm_as_var.get_one_password(title)
+        successful_commend()
+    elif args.count_password:
+        print(f"You have\n > {len(pm_as_var.password)} \npasswords stored in the backend.")
         successful_commend()
     else:
         print("./main.py <options>\nUse -h for more help.")
