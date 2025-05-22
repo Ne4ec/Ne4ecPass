@@ -46,6 +46,8 @@ OPTIONS
   -h, --help            show this help message and exit
   -a, --all             show all Stored name and password pairs
   -c, --create          create a new entry with specified name
+  -cp, --count-password
+                        Display the number of passwords stored in the backend
   -g, --get-a-password  show password by the specified name
 ```
 **Warning**: This project is designed for learning purposes only. It is not intended for professional use and is suitable for school or study projects. <br>
