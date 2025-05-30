@@ -14,7 +14,7 @@ sudo pacman -Syu python git
 **Notice:** If you're using a different Linux distribution (`apt` or `dnf` etc.), make sure to use the correct `package manager`. The steps should be similar across distributions. <br>
 2. after that, install my repository
 ```bash
-sudo git clone https://github.com/Ne4ec/PasswordManager
+sudo git clone https://github.com/Ne4ec/Ne4ecPass
 cd PasswordManager
 ```
 3. Now we are finished, its upon on you, what do you want to do. See the usage
