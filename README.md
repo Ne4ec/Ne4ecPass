@@ -31,7 +31,7 @@ After installation, open the folder where the Git executable was downloaded (typ
 
 2. write here the following commed
 ```bash
-git clone https://github.com/Ne4ec/PasswordManager
+git clone https://github.com/Ne4ec/Ne4ecPass
 cd PasswordManager
 ```
 3. Now you are finished. Go now the the Usage of the password manager.
