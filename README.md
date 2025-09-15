@@ -1,4 +1,5 @@
 # Ne4ecPass v 1.0
+![creation_of_a_password_poc](https://github.com/Ne4ec/Ne4ecPass/blob/main/.poc/poc.png)<br>
 A CLI password manager, created with Python. It is for educational purposes only - do not use it as your default password manager! 
 ____
 ## Installation
