@@ -1,4 +1,4 @@
-# Ne4ecPass v 1.0
+# Ne4ecPass version 0.2 
 ![creation_of_a_password_poc](https://github.com/Ne4ec/Ne4ecPass/blob/main/.poc/poc.png)<br>
 A CLI password manager, created with Python. It is for educational purposes only - do not use it as your default password manager! 
 ____
@@ -36,20 +36,20 @@ ____
 ## Usage
 A simple password manager that allows you to create a password and assign it a name.
 ```
-  SYNOPSIS 
-      ./main.py [OPTIONS]
-  
-  DISCRIPTION
-      Ne4ecPass is a simple password manager that stores entries as (Name, Password) pairs.
-      Data is stored in a basic backend (not encrypted)!
-      This project was created by Ne4ec as a hobby. For more info, visit: https://github.com/Ne4ec/Ne4ecPass
-      ⚠️ IMPORTANT: Do *not* use this tool to store real passwords.
-      It lacks encryption and security measures. Use a trusted, professional password manager instead.
-  
-  OPTIONS
-      -h,    show this help message and exit
-      -a,    show all stored name and password pairs
-      -c,    create a new entry with specified name
+usage: main.py [-h] [-a] [-c] [-cp] [-g]
+
+Ne4ecPass is a simple password manager that stores entries as (Name, Password) pairs. Data is stored in a basic
+backend (not encrypted). This project was created by Ne4ec as a hobby. For more info, visit:
+https://github.com/ne4ec/PassNe4ec ⚠️ IMPORTANT: Do *not* use this tool to store real passwords. It lacks
+encryption and security measures. Use a trusted, professional password manager instead.
+
+options:
+  -h, --help            show this help message and exit
+  -a, --all             show all Stored name and password pairs
+  -c, --create          create a new entry with specified name
+  -cp, --count-password
+                        Display the number of passwords stored in the backend
+  -g, --get-a-password  show password by the specified name
 ```
 **Warning**: This project is designed for learning purposes only. It is not intended for professional use and is suitable for school or study projects.
 ____

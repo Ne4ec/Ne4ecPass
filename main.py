@@ -1,64 +1,74 @@
 #!/bin/python3
  
 import random
-import time
-import sys
+from time import sleep
+import argparse
 
 from logo import logo
 from password_storage import *
 
-def show_option():
-    return r"""
-    SYNOPSIS 
-        ./main.py [OPTIONS]
-    
-    DISCRIPTION
-        Ne4ecPass is a simple password manager that stores entries as (Name, Password) pairs.
-        Data is stored in a basic backend (not encrypted)!
-        This project was created by Ne4ec as a hobby. For more info, visit: https://github.com/Ne4ec/Ne4ecPass
-        ⚠️ IMPORTANT: Do *not* use this tool to store real passwords.
-        It lacks encryption and security measures. Use a trusted, professional password manager instead.
-    
-    OPTIONS
-        -a,    show all stored name and password pairs
-        -c,    create a new entry with specified name
-        -h,    show this help message and exit
-    """
-
 def display_view(content):
-    print(40 * '-')
-    print(f"{content}")
-    print(40 * '-')
+    return 40 * '-' + f"\n{content}\n" + 40 * '-'
     
-def password_generator():
+def password_generator(length=15): # default value, the user could change it
     ascii_characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789!§$@€&/#*<>[]()"
     password = []
-    for _ in range(12):
+    for _ in range(length):
         password.append(random.choice(ascii_characters))
     
     return ''.join(password)
 
+def successful_commend():
+    print("\nGreat, everything is going well.\nFile has been closed.")
+
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+    description =(
+        "Ne4ecPass is a simple password manager that stores entries as (Name, Password) pairs. "
+        "Data is stored in a basic backend (not encrypted). "
+        "This project was created by Ne4ec as a hobby. For more info, visit: https://github.com/ne4ec/PassNe4ec\n\n"
+        "⚠️ IMPORTANT: Do *not* use this tool to store real passwords. "
+        "It lacks encryption and security measures. Use a trusted, professional password manager instead."))
+    
+    parser.add_argument("-a", "--all", action="store_true", help="show all Stored name and password pairs")
+    parser.add_argument("-c", "--create", action="store_true", help="create a new entry with specified name")
+    parser.add_argument("-cp", "--count-password", action="store_true", help="Display the number of passwords stored in the backend")
+    parser.add_argument("-g", "--get-a-password", action="store_true", help="show password by the specified name")
 
-    display_view(logo)
-    user_option = sys.argv
+    print(display_view(logo))
 
-    if (len(user_option) != 2):
-        print(show_option())
-    else:
-        if user_option[1] == "-a":
-            with open("password_storage.py", 'r') as password_storage_file:
-                all_passwords = password_storage_file.read()
-                print(all_passwords)
-        elif user_option[1] == "-c":
-            with open("password_storage.py", 'a') as password_storage_file:
+    args = parser.parse_args()
+    if args.all:
+        print("Here are all the title and password pairs:\n" + 40 * '-')
+        
+        for pair in npm.password.items():
+            print(f"| {pair}")
+        print(40 * '-')
+        successful_commend()
+    elif args.create:
+        with open("password_storage.py", 'a') as password_storage_file:
+            while True:
                 title_of_new_password = input("What is the title:\n > ").title().strip()
-                print(f"You password is creating, for {title_of_new_password} ...")
-                generated_password = password_generator()
-                time.sleep(0.5)
-                password_storage_file.write(f"\nnpm.password['{title_of_new_password}'] = '{generated_password}'")
-                display_view(f"Title: {title_of_new_password}\nPassword: {generated_password}")
-        elif user_option[1] == "-h":
-            print(show_option())
-        else:
-            print(show_option())
+                if "'" in title_of_new_password or '"' in title_of_new_password:
+                    print("Please, don't the 2 following characters\n - '\n - \"  \nas input!")
+                    continue
+                elif title_of_new_password in npm.password:
+                    print("The title is already used!\nPlease use another title...\n" + 40 * '-' + "\n")
+                else:
+                    break
+            print(f"You password is creating, for {title_of_new_password}...")
+            generated_password = password_generator()
+            time.sleep(0.5)
+            password_storage_file.write(f"\nnpm.password[str('{title_of_new_password}')] = '{generated_password}'")
+            print(display_view(f"| Title: {title_of_new_password}\n| Password: {generated_password} "))
+            successful_commend()
+    elif args.get_a_password:
+        title = input("What is the title of the password you are looking for:\n > ").title().strip()
+        npm.get_one_password(title)
+        successful_commend()
+    elif args.count_password:
+        print(f"You have\n > {len(npm.password)} \npasswords stored in the backend.")
+        successful_commend()
+    else:
+        print("./main.py <options>\nUse -h for more help.")
+        successful_commend()
