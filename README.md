@@ -36,12 +36,13 @@ ____
 ## Usage
 A simple password manager that allows you to create a password and assign it a name.
 ```
-usage: main.py [-h] [-a] [-c] [-cp] [-g]
+usage: main.py [-h] [-a] [-c] [-cp] [-g] [-m]
 
-Ne4ecPass is a simple password manager that stores entries as (Name, Password) pairs. Data is stored in a basic
-backend (not encrypted). This project was created by Ne4ec as a hobby. For more info, visit:
-https://github.com/ne4ec/PassNe4ec ⚠️ IMPORTANT: Do *not* use this tool to store real passwords. It lacks
-encryption and security measures. Use a trusted, professional password manager instead.
+Ne4ecPass is a lightweight, experimental password manager that stores credentials as (Name, Password) pairs. Data
+is stored using Base64 encoding only and is not encrypted. This project was created by Ne4ec as a personal hobby
+project. For more information, visit the project repository on https://github.com/Ne4ec/Ne4ecPass. ⚠ Important: Do
+not use KeopPass to store real or sensitive passwords. It lacks encryption and essential security protections. For
+real-world use, rely on a trusted, professional password manager.
 
 options:
   -h, --help            show this help message and exit
@@ -50,6 +51,7 @@ options:
   -cp, --count-password
                         Display the number of passwords stored in the backend
   -g, --get-a-password  show password by the specified name
+  -m, --modify          modify the password
 ```
 **Warning**: This project is designed for learning purposes only. It is not intended for professional use and is suitable for school or study projects.
 ____
