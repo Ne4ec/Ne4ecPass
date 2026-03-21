@@ -1,4 +1,4 @@
-# Ne4ecPass version 0.3 
+# Ne4ecPass version 0.4 
 ![creation_of_a_password_poc](https://github.com/Ne4ec/Ne4ecPass/blob/main/.poc/poc.png)<br>
 A CLI password manager, created with Python. It is for educational purposes only - do not use it as your default password manager! 
 ____
@@ -36,12 +36,12 @@ ____
 ## Usage
 A simple password manager that allows you to create a password and assign it a name.
 ```
-usage: main.py [-h] [-a] [-c] [-cp] [-g] [-m]
+usage: main.py [-h] [-a] [-c] [-cp] [-g] [-m] [-p]
 
-Ne4ecPass is a lightweight, experimental password manager that stores credentials as (Name, Password) pairs. Data
-is stored using Base64 encoding only and is not encrypted. This project was created by Ne4ec as a personal hobby
+Ne4ecPass is a lightweight, experimental password manager that stores credentials as (Name, Password) pairs. Data is
+stored using Base64 encoding only and is not encrypted. This project was created by Ne4ec as a personal hobby
 project. For more information, visit the project repository on https://github.com/Ne4ec/Ne4ecPass. ⚠ Important: Do
-not use KeopPass to store real or sensitive passwords. It lacks encryption and essential security protections. For
+not use Ne4ecPass to store real or sensitive passwords. It lacks encryption and essential security protections. For
 real-world use, rely on a trusted, professional password manager.
 
 options:
@@ -52,6 +52,7 @@ options:
                         Display the number of passwords stored in the backend
   -g, --get-a-password  show password by the specified name
   -m, --modify          modify the password
+  -p, --preferences     set password generation preferences (length, types, visibility)
 ```
 **Warning**: This project is designed for learning purposes only. It is not intended for professional use and is suitable for school or study projects.
 ____
